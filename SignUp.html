@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="SignUp.css">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Sign Up!</h1>
+    </div>
+    <form action="SignUp.php" method="post">
+        <label for="firstName">First Name : </label>
+        <input type="text" id="firstName" name="firstName" required>
+        <br><br>
+        <label for="lastName">Last Name : </label>
+        <input type="text" id="lastName" name="lastName" required>
+        <br><br>
+        <label for="age">Age : <small id="ageValue"></small></label>
+        <input type="range" id="age" name="age" min="5" max="100" step="1" value=50 oninput="displayAge()">
+        <br><br>
+        <label for="email">Email : </label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label for="password">Password : </label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <label for="phoneNumber">Phone Number : </label>
+        <input type="number" id="phoneNumber" name="phoneNumber" pattern="[0-9]{8}" required>
+        <br><br><br>
+        <input type="submit" value="submit">
+        <br><br>
+        <p>already have an account? <a href="SignIn.html">sign in!</a></p>
+    </form>
+
+    <script src="SignUp.js"></script>
+</body>
+</html>
