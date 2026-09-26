@@ -8,7 +8,7 @@ $query = $conn->prepare("select * from games order by id desc");
 $query->execute();
 $result = $query->get_result();
 
-if (!isset($_SESSION["firstName"]) && !isset($_SESSION["lastName"]))
+if (!isset($_SESSION["userId"]))
     {
         header("Location: SignIn.html");
         exit();
@@ -29,17 +29,20 @@ $lastName = $_SESSION["lastName"];
 <body>
     <h2>hello there <?=$firstName?> <?=$lastName?></h2>
     <br><br>
-    <h3>available games : </h3>
-    <?php if ($result->num_rows == 0):?>
+    <?php if($result->num_rows == 0):?>
         <p>no games yet</p>
     <?php else:?>
-        <?php while ($game = $result->fetch_assoc()):?>
+        <?php while($game = $result->fetch_assoc()):?>
             <img src="<?=$game["urlImage"]?>">
             <p><?=$game["title"]?></p>
-            <p><?=$game["description"]?></p>
-            <p><?=$game["releaseDate"]?></p>
+            <p><?=$game["title"]?></p>
+            <p><?=$game["title"]?></p>
+            <form action="addGame.php" method="post">
+                <input type="hidden" name="gameId" value="<?=(int)$game["id"]?>">
+                <button type="submit">add to cart</button>
+            </form>
         <?php endwhile;?>
     <?php endif;?>
 
-</body>
+    <a href="Cart.php">cart</a>
 </html>

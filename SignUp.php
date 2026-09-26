@@ -36,6 +36,7 @@ else
 
         if ($result2)
             {
+                $_SESSION["userId"] = $conn->insert_id;
                 header("Location: HomePage.php");
                 exit();
             }

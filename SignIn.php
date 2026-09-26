@@ -18,6 +18,7 @@ $result = $query->get_result();
 if($result->num_rows > 0)
     {
         $row = $result->fetch_assoc();
+        $_SESSION["userId"] = $row["id"];
         $_SESSION["firstName"] = $row["firstName"];
         $_SESSION["lastName"] = $row["lastName"];
         header("Location: HomePage.php");
